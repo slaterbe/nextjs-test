@@ -17,6 +17,8 @@ const Home: NextPage = () => {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
+        <p>{(new Date()).getTime() / 1000}</p>
+
         <p className={styles.description}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.tsx</code>
@@ -68,5 +70,16 @@ const Home: NextPage = () => {
     </div>
   )
 }
+
+export async function getStaticProps() {
+  return {
+    props: {},
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every 10 seconds
+    revalidate: 10, // In seconds
+  }
+}
+
 
 export default Home
